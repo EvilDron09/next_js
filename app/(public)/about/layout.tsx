@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import React from "react";
 export const metadata:Metadata = {
-    title:'AboutLayout metadata'
+    title:'AboutLayout metadata',
+    description:'about layout description'
 }
 
 type Props = {children: React.ReactNode}

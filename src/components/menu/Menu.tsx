@@ -8,13 +8,13 @@ export const Menu = () => {
                     <Link href="/public">Home</Link>
                 </li>
                 <li>
-                    <Link href="about">About</Link>
+                    <Link href="/about">About</Link>
                 </li>
                 <li>
-                    <Link href="contacts">Contacts</Link>
+                    <Link href="/contacts">Contacts</Link>
                 </li>
                 <li>
-                    <Link href="users">Users</Link>
+                    <Link href="/users">Users</Link>
                 </li>
             </ul>
             <hr/>

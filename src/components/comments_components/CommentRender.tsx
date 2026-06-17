@@ -4,15 +4,13 @@ import {IComment} from "@/models/IComment";
 import {useEffect, useState} from "react";
 import {getComment} from "@/service/api-service";
 
-interface ICommentsRenderProps {
+interface ICommentRender{
     id: string;
 }
 
-export const CommentRender = ({id}:ICommentsRenderProps) => {
+export const CommentRender = ({id}:ICommentRender) => {
 
     const [comment,setComment] = useState<IComment|null>(null);
-
-
 
     useEffect(() => {
         getComment(id)

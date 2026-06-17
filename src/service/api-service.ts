@@ -5,22 +5,22 @@ import {IComment} from "@/models/IComment";
 const baseUrl = 'https://jsonplaceholder.typicode.com'
 
 export const getUsers = async ():Promise<IUser[]> =>{
-    return await fetch(baseUrl +'/users')
+    return await fetch(`${baseUrl}/users`)
         .then(value => value.json())
 }
 
 export const getUser = async (id:string):Promise<IUser> =>{
-    return await fetch(getUsers + `/${id}`)
+    return await fetch(`${baseUrl}/users/${id}`)
         .then(value => value.json())
 }
 
 export const getPosts = async ():Promise<IPost[]> =>{
-    return await fetch(baseUrl+'/posts')
+    return await fetch(`${baseUrl}/posts`)
         .then(value => value.json())
 }
 
 export const getPost = async (id:string):Promise<IPost> =>{
-    return await fetch(getPosts +`/${id}`)
+    return await fetch(`${baseUrl}/posts/${id}`)
         .then(value => value.json())
 }
 

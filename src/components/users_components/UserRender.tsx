@@ -1,21 +1,12 @@
-"use client"
-
-import {useEffect, useState} from "react";
-import {IUser} from "@/models/IUser";
 import {getUser} from "@/service/api-service";
 
 interface IUserRender{
     id:string
 }
 
-export const UserRender = ({id}:IUserRender) => {
+export const UserRender = async ({id}:IUserRender) => {
 
-    const [user,setUser] = useState<IUser|null>(null);
-
-    useEffect(() => {
-        getUser(id)
-            .then((value)=>{setUser(value)})
-    }, [id]);
+    const user = await getUser(id)
 
     return (
         <>

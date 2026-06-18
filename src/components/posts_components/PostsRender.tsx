@@ -1,20 +1,9 @@
-"use client";
-
-import {useEffect, useState} from "react";
-import {IPost} from "@/models/IPost";
 import {getPosts} from "@/service/api-service";
 import {Posts} from "@/components/posts_components/Posts";
 
-export const PostsRender = () => {
+export const PostsRender = async () => {
 
-    const [ posts, setPosts ] = useState<IPost[]>([]);
-
-    useEffect(() => {
-        getPosts()
-            .then((value) =>{
-                setPosts(value)
-            })
-    }, []);
+    const posts = await getPosts()
 
     return (
         <>

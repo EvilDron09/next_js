@@ -1,26 +1,18 @@
-"use client";
-
-import {useEffect, useState} from "react";
-import {IPost} from "@/models/IPost";
 import {getPost} from "@/service/api-service";
 
+
 interface IPostRender {
-    id:string;
-}
+    id: string;
+};
 
-export const PostRender = ({id}:IPostRender) => {
+export const PostRender = async ({id}:IPostRender) => {
 
-    const [post, setPost] = useState<IPost|null>(null);
-
-    useEffect(() => {
-        getPost(id)
-            .then((value) => {setPost(value)})
-    }, [id]);
+   const post = await getPost(id)
 
     return (
         <>
-            <h3>{post?.title}</h3>
-            <p>{post?.body}</p>
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
         </>
     );
 };

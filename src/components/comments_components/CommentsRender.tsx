@@ -1,20 +1,10 @@
-"use client";
-import {useEffect, useState} from "react";
-import {IComment} from "@/models/IComment";
 import {Comments} from "@/components/comments_components/Comments";
 import {getComments} from "@/service/api-service";
 
 
-export const CommentsRender = () => {
+export const CommentsRender = async () => {
 
-    const [comments, setComments] = useState<IComment[]>([]);
-
-    useEffect(() => {
-        getComments()
-            .then((value) => {
-                setComments(value)
-            })
-    }, []);
+    const comments = await getComments()
     return(
         <div>
             {

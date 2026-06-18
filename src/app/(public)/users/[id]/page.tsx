@@ -1,8 +1,11 @@
 import type { Metadata } from 'next';
 import {FC} from "react";
+import {SearchParams} from "next/dist/server/request/search-params";
+import {IUser} from "@/models/IUser";
 
 type Props = {
-    params:{id:string};
+    params:Promise<{id:string}>;
+    searchParams:Promise<SearchParams>
 }
 
 export const generateMetadata = async ({params}:Props): Promise<Metadata> =>{
@@ -12,13 +15,21 @@ export const generateMetadata = async ({params}:Props): Promise<Metadata> =>{
     }
 }
 
-const UsersPage: FC<Props> = async ({params}) =>{
+const UsersPage: FC<Props> = async ({searchParams}) =>{
 
-    const {id} = await params;
+    const {data} = await searchParams;
+    let obj = null;
+    if(typeof data === "string"){
+        obj = JSON.parse(data) as IUser
+    }
+
 
     return (
         <div>
-            User page content {id}
+            {
+                obj && <>user page content {obj.id} {obj.name}</>
+
+            }
         </div>
     )
 }

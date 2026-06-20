@@ -1,0 +1,23 @@
+'use server'
+
+import sql from 'better-sqlite3';
+import {revalidatePath} from "next/cache";
+
+const db = sql('meals.db');
+
+export const saveMeal =async (fromData:FormData) =>{
+
+    const titleValue = fromData.get('title');
+    db.prepare(`insert into meals(title) values (?)`)
+        .run(titleValue);
+    revalidatePath('/')
+}
+
+type Meal = {
+    id:number,
+    title:string
+}
+
+export const getMeals = async ():Promise<Meal[]> =>{
+    return db.prepare<Meal[]>('select * from meals').all() as Meal[];
+}

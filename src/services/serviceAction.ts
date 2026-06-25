@@ -7,7 +7,7 @@ export const postCars = async (fromData:FormData)=>{
     const price = fromData.get('price') as string
     const year = fromData.get('brand') as string
 
-     await fetch(`${baseUrl}/cars`,{
+    await fetch(`${baseUrl}/cars`,{
         method:'POST',
         headers:{
             'Content-Type':'application.json',
@@ -15,6 +15,5 @@ export const postCars = async (fromData:FormData)=>{
         body:JSON.stringify({brand,year,price}),
 
 
-})
+    })
 }
-
